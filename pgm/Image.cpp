@@ -17,6 +17,7 @@
 #include <iostream>
 #include <cstdlib>
 #include<fstream>
+#include <iterator>
 using namespace std;
 
 
@@ -27,10 +28,7 @@ Image::Image() {
 Image::~Image() {
 }
 
-string Image::ecriture(vector<vector<int> > bob ){
 
-
-}
 
 void Image::lecture(string nom_fichier){
     string p, diese;
@@ -60,9 +58,9 @@ void Image::lecture(string nom_fichier){
     }
 }
 
-void Image::ecriture (){
+void Image::ecriture (string nom_fichier){
     
-    ofstream file(path.c_str());
+    ofstream file(nom_fichier.c_str());
     ostream_iterator<double> itf(file);
     
     file << "P2" << endl << "#" << endl << largeur << " " << hauteur << endl << "255" << endl;
