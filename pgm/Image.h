@@ -31,7 +31,7 @@ private :
 public :
     Image();
     void lecture(string);
-    void ecriture();
+    void ecriture(string);
     void createHistogramme();
     
     int getLargeur () {return largeur;};
