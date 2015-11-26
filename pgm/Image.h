@@ -21,23 +21,26 @@
 using namespace std;
 
 class Image {
-    
+
 private :
     int largeur;
-    int longueur;
+    int hauteur;
     string path;
     vector<vector<int> > image;
-    vector<vector<int> > histogramme;
-public:
+    Image* histogramme;
+public :
     Image();
     void lecture(string);
-    string ecriture(vector<vector<int> > );
+    void ecriture();
     void createHistogramme();
+    
     int getLargeur () {return largeur;};
-    int getLongueur() {return longueur;};
+    int getLongueur() {return hauteur;};
     string getPath () {return path;};
     vector<vector<int> > getImage () {return image;};
-    vector<vector<int> > getHisto () {return histogramme;};
+    Image* getHisto () {return histogramme;};
+    
+    void setPath(string s) {path = s;};
    
     
    

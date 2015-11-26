@@ -60,3 +60,19 @@ void Image::lecture(string nom_fichier){
     }
 }
 
+void Image::ecriture (){
+    
+    ofstream file(path.c_str());
+    ostream_iterator<double> itf(file);
+    
+    file << "P2" << endl << "#" << endl << largeur << " " << hauteur << endl << "255" << endl;
+    
+    for(int i = 0 ; i < hauteur ; i++)
+    {
+        for(int j = 0 ; j < largeur ; j++)
+        {
+            file << image.at(i).at(j) << "\t";
+        }
+        file << endl;
+    }
+}
