@@ -12,14 +12,51 @@
  */
 
 #include "Image.h"
+#include <string>
+#include <vector>
+#include <iostream>
+#include <cstdlib>
+#include<fstream>
+using namespace std;
+
 
 Image::Image() {
     
 }
 
-Image::Image(const Image& orig) {
+Image::~Image() {
 }
 
-Image::~Image() {
+string Image::ecriture(vector<vector<int> > bob ){
+
+
+}
+
+void Image::lecture(string nom_fichier){
+    string p, diese;
+    int teinte_max;
+    int i,j;
+    ifstream fichier(nom_fichier.c_str(), ios::in);  // on ouvre le fichier en lecture
+    if(fichier)  // si l'ouverture a réussi
+    {       
+        fichier>>p;
+        fichier>>diese;
+        fichier>>largeur;
+        fichier>>hauteur;
+        fichier>>teinte_max;
+        vector<int> ligne(largeur,0);
+        vector<vector<int> > image_2(hauteur, ligne);
+        image= image_2;
+        for(i=0; i<hauteur; i++){
+            for(j=0; j<largeur; j++){
+                fichier>>image[i][j];
+            }
+        }
+        fichier.close();  // on ferme le fichier
+    }
+    else  // sinon
+    {        
+        cout << "Impossible d'ouvrir le fichier !" << endl;
+    }
 }
 
