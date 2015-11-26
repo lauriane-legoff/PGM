@@ -30,8 +30,8 @@ private :
     vector<vector<int> > histogramme;
 public:
     Image();
-    vector<vector<int > > lecture();
-    string ecriture();
+    void lecture(string);
+    string ecriture( );
     void createHistogramme();
     int getLargeur () {return largeur;};
     int getLongueur() {return longueur;};
