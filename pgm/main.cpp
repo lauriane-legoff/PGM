@@ -8,7 +8,7 @@
  * File:   main.cpp
  * Author: eleve
  *
- * Created on 26 novembre 2015, 09:58
+ * Created on 26 novembre 2015, 12:41
  */
 
 #include <cstdlib>
@@ -27,11 +27,11 @@ using namespace std;
  * 
  */
 int main(int argc, char** argv) {
-    
+
     Image lena;
     lena.lecture("lena.pgm");
     lena.ecriture("test.pgm");
-
+    cout<<"sa mère"<<endl;
     return 0;
 }
 
