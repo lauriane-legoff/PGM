@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-/* 
+/*
  * File:   main.cpp
  * Author: eleve
  *
@@ -24,14 +24,16 @@
 using namespace std;
 
 /*
- * 
+ *
  */
 int main(int argc, char** argv) {
 
     Image lena;
     lena.lecture("lena.pgm");
     lena.ecriture("test.pgm");
-    cout<<"sa mère"<<endl;
+    lena.createHistogramme();
+    lena.getHisto()->ecriture("histogramme.pgm");
+
     return 0;
 }
 

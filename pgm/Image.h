@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-/* 
+/*
  * File:   Image.h
  * Author: eleve
  *
@@ -33,17 +33,20 @@ public :
     void lecture(string);
     void ecriture(string);
     void createHistogramme();
-    
+
     int getLargeur () {return largeur;};
     int getLongueur() {return hauteur;};
     string getPath () {return path;};
     vector<vector<int> > getImage () {return image;};
     Image* getHisto () {return histogramme;};
-    
+
+	void setLargeur(int l) {largeur = l;};
+	void setHauteur(int h) {hauteur = h;};
     void setPath(string s) {path = s;};
-   
-    
-   
+    void setDonneesImage(vector<vector<int> > i) {image = i;};
+
+
+
     virtual ~Image();
 
 

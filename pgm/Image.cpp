@@ -77,3 +77,41 @@ void Image::ecriture (string nom_fichier){
         file << endl;
     }
 }
+
+void Image::createHistogramme()
+{
+	float nbValeurs[256] = { 0 };
+	histogramme = new Image();
+	histogramme->setLargeur(256);
+	histogramme->setHauteur(70);
+
+	for(int i = 0 ; i < hauteur ; i++)
+		for(int j = 0 ; j < largeur ; j++)
+			nbValeurs[image[i][j]]++;
+
+	float maxVal = 0;
+	for(int i = 0 ; i < 256 ; i++)
+		if(nbValeurs[i] > maxVal)
+			maxVal = nbValeurs[i];
+
+	// on met les valeurs entre 0 et 70
+	for(int i = 0 ; i < 256 ; i++)
+		nbValeurs[i] *= 70.0/maxVal;
+
+	// on crée l'image de l'histogramme
+	vector<vector<int> > imgHisto;
+	for(int i = 0 ; i < 70 ; i++)
+	{
+		vector<int> aAjouter;
+		for(int j = 0 ; j < 256 ; j++)
+		{
+			if(i > 70 - nbValeurs[j])
+				aAjouter.push_back(255);
+			else
+				aAjouter.push_back(0);
+		}
+		imgHisto.push_back(aAjouter);
+	}
+
+	histogramme->setDonneesImage(imgHisto);
+}
