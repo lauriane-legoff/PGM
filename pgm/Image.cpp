@@ -4,10 +4,10 @@
  * and open the template in the editor.
  */
 
-/* 
+/*
  * File:   Image.cpp
  * Author: eleve
- * 
+ *
  * Created on 26 novembre 2015, 10:54
  */
 
@@ -16,13 +16,15 @@
 #include <vector>
 #include <iostream>
 #include <cstdlib>
-#include<fstream>
+#include <fstream>
 #include <iterator>
+#include <limits>
+
 using namespace std;
 
 
 Image::Image() {
-    
+
 }
 
 Image::~Image() {
@@ -36,9 +38,10 @@ void Image::lecture(string nom_fichier){
     int i,j;
     ifstream fichier(nom_fichier.c_str(), ios::in);  // on ouvre le fichier en lecture
     if(fichier)  // si l'ouverture a réussi
-    {       
+    {
         fichier>>p;
         fichier>>diese;
+        fichier.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // on ignore le commentaire s'il y en a un
         fichier>>largeur;
         fichier>>hauteur;
         fichier>>teinte_max;
@@ -53,18 +56,18 @@ void Image::lecture(string nom_fichier){
         fichier.close();  // on ferme le fichier
     }
     else  // sinon
-    {        
+    {
         cout << "Impossible d'ouvrir le fichier !" << endl;
     }
 }
 
 void Image::ecriture (string nom_fichier){
-    
+
     ofstream file(nom_fichier.c_str());
     ostream_iterator<double> itf(file);
-    
+
     file << "P2" << endl << "#" << endl << largeur << " " << hauteur << endl << "255" << endl;
-    
+
     for(int i = 0 ; i < hauteur ; i++)
     {
         for(int j = 0 ; j < largeur ; j++)
