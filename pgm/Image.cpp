@@ -107,9 +107,9 @@ void Image::createHistogramme()
 		for(int j = 0 ; j < 256 ; j++)
 		{
 			if(i > 70 - nbValeurs[j])
-				aAjouter.push_back(128);
-			else
 				aAjouter.push_back(255);
+			else
+				aAjouter.push_back(0);
 		}
 		imgHisto.push_back(aAjouter);
 	}
