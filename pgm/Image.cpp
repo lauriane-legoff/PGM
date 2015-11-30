@@ -19,6 +19,7 @@
 #include <fstream>
 #include <iterator>
 #include <limits>
+#include <cmath>
 
 using namespace std;
 
@@ -106,12 +107,33 @@ void Image::createHistogramme()
 		for(int j = 0 ; j < 256 ; j++)
 		{
 			if(i > 70 - nbValeurs[j])
-				aAjouter.push_back(255);
+				aAjouter.push_back(128);
 			else
-				aAjouter.push_back(0);
+				aAjouter.push_back(255);
 		}
 		imgHisto.push_back(aAjouter);
 	}
 
 	histogramme->setDonneesImage(imgHisto);
+}
+
+// x: nouvelle largeur, y: nouvelle hauteur
+void Image::redimmension(int x, int y)
+{
+	vector< vector<int> > newImage;
+
+	for(int i = 0 ; i < y ; i++)
+	{
+		vector<int> ligne;
+		for(int j = 0 ; j < x ; j++)
+		{
+			// on copie le pixel qui correspond au plus proche de l'image source
+			ligne.push_back(image[round((float)i/y*(hauteur-1))][round((float)j/x*(largeur-1))]);
+		}
+		newImage.push_back(ligne);
+	}
+
+	image = newImage;
+	largeur = x;
+	hauteur = y;
 }

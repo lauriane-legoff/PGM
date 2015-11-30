@@ -28,11 +28,13 @@ private :
     string path;
     vector<vector<int> > image;
     Image* histogramme;
+
 public :
     Image();
     void lecture(string);
     void ecriture(string);
     void createHistogramme();
+    void redimmension(int x, int y);
 
     int getLargeur () {return largeur;};
     int getLongueur() {return hauteur;};

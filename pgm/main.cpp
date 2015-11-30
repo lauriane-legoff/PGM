@@ -30,9 +30,10 @@ int main(int argc, char** argv) {
 
     Image lena;
     lena.lecture("lena.pgm");
-    lena.ecriture("test.pgm");
     lena.createHistogramme();
     lena.getHisto()->ecriture("histogramme.pgm");
+    lena.redimmension(512, 1024);
+    lena.ecriture("redimension.pgm");
 
     return 0;
 }
